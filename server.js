@@ -38,7 +38,7 @@ app.post('/newTask', function (req, res) {
     console.log(db);
 })
 app.get('/listTasks',function(req,res){
-    res.render('listTasks.html');
+    res.render('listTasks.html',{alltasks:db});
 })
 
 app.listen(8085);
