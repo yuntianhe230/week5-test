@@ -1,28 +1,44 @@
 var express = require('express');
 var app = express();
+
+
+let bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+app.use(express.static('views'));
+app.use(express.static('css'));
+
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use(express.static('views'));
+
+
+
 let db = [];
-db.push({
-    carId: 0,
-    carMake: 'BMW',
-    carModel: '735',
-    carYear: 2014
-});
-db.push({
-    carId: 1,
-    carMake: 'Mercedes',
-    carModel: 'C250',
-    carYear: 2017
-});
-db.push({
-    carId: 3,
-    carMake: 'Audi',
-    carModel: 'A6',
-    carYear: 2019
-});
+let viewPath = __dirname + "/views";
+
+let fileName = viewPath + "index.html";
+app.use(express.static('css'));
+
 app.get('/', function (req, res) {
-    res.render('thankyou.html', {username: "Guest", carDb: db});
+    let fileName = viewPath + "index.html";
+    res.send(fileName);
+
 });
+
+app.post('/newTask', function (req, res) {
+
+    db.push({
+        taskName:req.body.taskName,
+        taskDueDate:req.body.dueDate,
+        taskDescription:req.body.taskDescription
+
+    });
+    console.log(db);
+})
+app.get('/listTasks',function(req,res){
+    res.render('listTasks.html');
+})
+
 app.listen(8085);
