@@ -18,17 +18,17 @@
                 <td>dueDate</td>
                 <td>taskDescription</td>
             </tr>
-            <% for ( var i =0; i< alltasks.length;i++){ %>
+            <% for ( var i =0; i< taskDb.length;i++){ %>
                 <tr>
                 
                     <td>
-                        <%= alltasks[i].taskName %>
+                        <%= taskDb[i].taskName %>
                     </td>
                     <td>
-                        <%= alltasks[i].dueDate %>
+                        <%= taskDb[i].dueDate %>
                     </td>
                     <td>
-                        <%= alltasks[i].taskDescription %>
+                        <%= taskDb[i].taskDescription %>
                     </td>
                 </tr>
                 <% }%>
