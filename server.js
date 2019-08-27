@@ -18,7 +18,7 @@ app.set('view engine', 'html');
 let db = [];
 let viewPath = __dirname + "/views";
 
-let fileName = viewPath + "index.html";
+
 app.use(express.static('css'));
 
 app.get('/', function (req, res) {
@@ -26,7 +26,10 @@ app.get('/', function (req, res) {
     res.send(fileName);
 
 });
-
+// app.get('/addNewTask',function(req,res){
+//     let fileName = viewPath + "/addNewTask.html";
+//     res.send(fileName);
+// })
 app.post('/newTask', function (req, res) {
 
     db.push({
@@ -36,6 +39,7 @@ app.post('/newTask', function (req, res) {
 
     });
     console.log(db);
+    res.send("you have added a task");
 })
 app.get('/listTasks',function(req,res){
     res.render('listTasks.html',{taskDb:db});
