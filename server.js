@@ -26,10 +26,10 @@ app.get('/', function (req, res) {
     res.send(fileName);
 
 });
-// app.get('/addNewTask',function(req,res){
-//     let fileName = viewPath + "/addNewTask.html";
-//     res.send(fileName);
-// })
+app.get('/addNewTask',function(req,res){
+    let fileName = viewPath + "/addNewTask.html";
+    res.send(fileName);
+})
 app.post('/newTask', function (req, res) {
 
     db.push({
